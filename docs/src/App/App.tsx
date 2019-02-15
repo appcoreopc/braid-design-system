@@ -8,6 +8,8 @@ import classnames from 'classnames';
 import Logo from './Logo/Logo';
 import ComponentRoute from './ComponentRoute/ComponentRoute';
 import styles from './App.css.js';
+import Philosophy from './guides/Philosophy';
+import Workflow from './guides/Workflow';
 
 const { ThemeProvider, Text, Box, BulletList, Bullet } = components;
 
@@ -104,6 +106,29 @@ export default withRouter(
                 paddingRight="gutter"
               >
                 <Text size="large" weight="strong" marginBottom="small">
+                  Guides
+                </Text>
+                <BulletList marginBottom="small">
+                  <Bullet>
+                    <Link
+                      style={{ color: 'inherit' }}
+                      to={`/guides/philosophy`}
+                      onClick={this.closeMenu}
+                    >
+                      Philosophy
+                    </Link>
+                  </Bullet>
+                  <Bullet>
+                    <Link
+                      style={{ color: 'inherit' }}
+                      to={`/guides/workflow`}
+                      onClick={this.closeMenu}
+                    >
+                      Workflow
+                    </Link>
+                  </Bullet>
+                </BulletList>
+                <Text size="large" weight="strong" marginBottom="small">
                   Tools
                 </Text>
                 <BulletList marginBottom="small">
@@ -176,6 +201,16 @@ export default withRouter(
                 paddingTop="small"
                 paddingBottom="xlarge"
               >
+                <Route path="/guides">
+                  <div style={{ maxWidth: 700 }}>
+                    <Route
+                      path="/guides/philosophy"
+                      exact
+                      component={Philosophy}
+                    />
+                    <Route path="/guides/workflow" exact component={Workflow} />
+                  </div>
+                </Route>
                 <Route
                   path="/components/:componentName"
                   render={({ match }) => (
