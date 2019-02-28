@@ -33,7 +33,7 @@ export interface Tokens {
   heading: Record<HeadingSize, ResponsiveHeading>;
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: Spacing;
-  columnSpacing: Spacing | Record<'gutter', number>;
+  columnSpacing: Spacing & Record<'gutter', number>;
   borderWidth: Record<BorderWidthVariants, number>;
 }
 

@@ -1,5 +1,3 @@
-import { Css } from '../types';
-
 export interface FillParams {
   formAccent: string;
   formAccentDisabled: string;
@@ -15,7 +13,7 @@ export default ({
   positive,
   secondary,
   white
-}: FillParams): Css => ({
+}: FillParams) => ({
   '.fill_currentColor': { fill: 'currentColor' },
   '.fill_formAccent': { fill: formAccent },
   '.fill_formAccentDisabled': { fill: formAccentDisabled },

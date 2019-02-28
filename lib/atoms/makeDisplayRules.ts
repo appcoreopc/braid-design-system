@@ -1,29 +1,20 @@
-import mapKeys from 'lodash/mapKeys';
-
 import { Tokens } from '../themes/theme';
 import createDesktopRules from './utils/makeDesktopRules';
 
-const defaultDisplayPrefix = '.display_';
-const desktopDisplayPrefix = '.displayDesktop_';
-
-const displayRules = {
-  block: { display: 'block' },
-  inline: { display: 'inline' },
-  none: { display: 'none' },
-  inlineBlock: { display: 'inline-block' },
-  flex: { display: 'flex' }
-};
-
-const defaultDisplayRules = mapKeys(
-  displayRules,
-  (value, key) => `${defaultDisplayPrefix}${key}`
-);
-const desktopDisplayRules = mapKeys(
-  displayRules,
-  (value, key) => `${desktopDisplayPrefix}${key}`
-);
-
 export default (tokens: Tokens) => ({
-  ...defaultDisplayRules,
-  ...createDesktopRules({ tokens, css: desktopDisplayRules })
+  '.display_block': { display: 'block' },
+  '.display_inline': { display: 'inline' },
+  '.display_none': { display: 'none' },
+  '.display_inlineBlock': { display: 'inline-block' },
+  '.display_flex': { display: 'flex' },
+  ...createDesktopRules({
+    tokens,
+    css: {
+      '.displayDesktop_block': { display: 'block' },
+      '.displayDesktop_inline': { display: 'inline' },
+      '.displayDesktop_none': { display: 'none' },
+      '.displayDesktop_inlineBlock': { display: 'inline-block' },
+      '.displayDesktop_flex': { display: 'flex' }
+    }
+  })
 });

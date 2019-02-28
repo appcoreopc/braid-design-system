@@ -1,27 +1,38 @@
-import toPairs from 'lodash/toPairs';
-import fromPairs from 'lodash/fromPairs';
-
 import { px } from './toUnit';
 import { Tokens } from '../../themes/theme';
 
+type RowSpaceProperty =
+  | 'marginTop'
+  | 'marginBottom'
+  | 'paddingTop'
+  | 'paddingBottom';
+
+type RowSpaceRule = { [property in RowSpaceProperty]?: string };
+
+type RowSpaceVariants = keyof Tokens['rowSpacing'];
+
+type RowRuleVariants = RowSpaceVariants | 'none';
+
+type RowSpacingRules = { [name in RowRuleVariants]: RowSpaceRule };
+
 export default (
-  ruleName: string,
-  propertyName: string,
+  propertyName: RowSpaceProperty,
   { rowHeight, rowSpacing }: Tokens
-) => {
-  const rowRules = fromPairs(
-    toPairs(rowSpacing).map(([key, value]) => [
-      `.${ruleName}_${key}`,
-      {
-        [propertyName]: px(value * rowHeight)
-      }
-    ])
-  );
+): RowSpacingRules => {
+  const makeSpaceRule = (variation: RowSpaceVariants) => ({
+    [propertyName]: px(rowSpacing[variation] * rowHeight)
+  });
 
   return {
-    [`.${ruleName}_none`]: {
+    none: {
       [propertyName]: 'none'
     },
-    ...rowRules
+    xxsmall: makeSpaceRule('xxsmall'),
+    xsmall: makeSpaceRule('xsmall'),
+    small: makeSpaceRule('small'),
+    medium: makeSpaceRule('medium'),
+    large: makeSpaceRule('large'),
+    xlarge: makeSpaceRule('xlarge'),
+    xxlarge: makeSpaceRule('xxlarge')
   };
 };

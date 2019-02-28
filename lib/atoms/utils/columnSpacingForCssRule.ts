@@ -1,26 +1,41 @@
 import { px } from './toUnit';
 import { Tokens } from '../../themes/theme';
-import toPairs from 'lodash/toPairs';
-import fromPairs from 'lodash/fromPairs';
+
+type ColumnSpaceProperty =
+  | 'marginLeft'
+  | 'marginRight'
+  | 'paddingLeft'
+  | 'paddingRight';
+
+type ColumnSpaceRule = { [property in ColumnSpaceProperty]?: string };
+
+type ColumnSpaceVariants = keyof Tokens['columnSpacing'];
+
+type ColumnRuleVariants = ColumnSpaceVariants | 'none';
+
+type ColumnSpacingRules = { [name in ColumnRuleVariants]: ColumnSpaceRule };
+
+type ruleNames = [];
 
 export default (
-  ruleName: string,
-  propertyName: string,
+  propertyName: ColumnSpaceProperty,
   { columnWidth, columnSpacing }: Tokens
-) => {
-  const columnRules = fromPairs(
-    toPairs(columnSpacing).map(([key, value]) => [
-      `.${ruleName}_${key}`,
-      {
-        [propertyName]: px(value * columnWidth)
-      }
-    ])
-  );
+): ColumnSpacingRules => {
+  const makeSpaceRule = (variation: ColumnSpaceVariants) => ({
+    [propertyName]: px(columnSpacing[variation] * columnWidth)
+  });
 
   return {
-    [`.${ruleName}_none`]: {
+    none: {
       [propertyName]: 'none'
     },
-    ...columnRules
+    xxsmall: makeSpaceRule('xxsmall'),
+    xsmall: makeSpaceRule('xsmall'),
+    small: makeSpaceRule('small'),
+    medium: makeSpaceRule('medium'),
+    large: makeSpaceRule('large'),
+    xlarge: makeSpaceRule('xlarge'),
+    xxlarge: makeSpaceRule('xxlarge'),
+    gutter: makeSpaceRule('gutter')
   };
 };

@@ -1,5 +1,3 @@
-import { Css } from '../types';
-
 export interface ColorParams {
   link: string;
   linkHover?: string;
@@ -21,7 +19,7 @@ export default ({
   secondary,
   formAccent,
   neutral
-}: ColorParams): Css => ({
+}: ColorParams) => ({
   '.color_link': {
     color: link,
     '&:hover,&:focus': linkHover
