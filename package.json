@@ -69,6 +69,7 @@
     "basekick": "^3.0.0",
     "classnames": "^2.2.6",
     "polished": "^3.0.3",
+    "treat": "^1.0.0-alpha.2",
     "utility-types": "^3.2.1"
   },
   "peerDependencies": {
@@ -84,9 +85,9 @@
     "@commitlint/cli": "^7.2.1",
     "@octokit/rest": "^15.16.1",
     "@semantic-release/commit-analyzer": "^6.1.0",
-    "@semantic-release/release-notes-generator": "^7.1.4",
-    "@semantic-release/npm": "^5.1.4",
     "@semantic-release/github": "^5.2.10",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/classnames": "^2.2.6",
     "@types/dedent": "^0.7.0",
     "@types/lodash": "^4.14.120",

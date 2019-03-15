@@ -75,7 +75,7 @@ export default class Radio extends Component<RadioProps, State> {
           const { hovered } = this.state;
 
           const fieldMessageId = `${id}-message`;
-          const radioSize = getCheckboxRadioSize(theme);
+          const radioSize = getCheckboxRadioSize(theme.tokens);
 
           return (
             <div>

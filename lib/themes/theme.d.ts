@@ -225,4 +225,5 @@ export interface Theme {
   readonly name: string;
   readonly tokens: Tokens;
   readonly atoms: Atoms;
+  readonly treatTheme: any;
 }
