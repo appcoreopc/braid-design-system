@@ -1,10 +1,11 @@
 import React, { CSSProperties, useContext, ReactElement } from 'react';
-import classnames from 'classnames';
+import { useClasses } from 'treat';
 import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import styles from './TextLinkRenderer.css.js';
 import { useTheme } from '../private/ThemeContext';
+import { baseReset } from '../Reset/Reset.treat';
 
 interface StyleProps {
   style: CSSProperties;
@@ -22,12 +23,12 @@ export const TextLinkRenderer = ({
 }: TextLinkRendererProps) => {
   const { atoms } = useTheme();
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [styles.root, atoms.reset.a, atoms.color.link];
+  const defaultStyles = [styles.root, baseReset, atoms.color.link];
 
   if (inline) {
     return children({
       style: {},
-      className: classnames(defaultStyles),
+      className: useClasses(defaultStyles),
     });
   }
 
@@ -51,7 +52,7 @@ export const TextLinkRenderer = ({
         <span className={styles.overlayContainer}>
           {children({
             style: {},
-            className: classnames(defaultStyles, touchableStyles, actionStyles),
+            className: useClasses(defaultStyles, touchableStyles, actionStyles),
           })}
           <FieldOverlay variant="focus" className={styles.focusOverlay} />
         </span>
@@ -63,7 +64,7 @@ export const TextLinkRenderer = ({
     <Text baseline={false}>
       {children({
         style: {},
-        className: classnames(
+        className: useClasses(
           defaultStyles,
           touchableStyles,
           atoms.display.inlineBlock,
