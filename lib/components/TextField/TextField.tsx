@@ -1,10 +1,10 @@
 import React, { ReactNode, AllHTMLAttributes, Fragment } from 'react';
-import classnames from 'classnames';
+import { useClasses } from 'treat';
 import { Box } from '../Box/Box';
 import { FieldLabel } from '../FieldLabel/FieldLabel';
 import { FieldMessage } from '../FieldMessage/FieldMessage';
 import styles from './TextField.css.js';
-import { useTheme } from '../private/ThemeContext';
+import textStyles from '../Text/Text.treat';
 
 const validTypes = {
   text: 'text',
@@ -46,7 +46,6 @@ export const TextField = ({
   onBlur,
   onFocus,
 }: TextFieldProps) => {
-  const theme = useTheme();
   const messageId = `${id}-message`;
 
   return (
@@ -76,11 +75,11 @@ export const TextField = ({
           onBlur={onBlur}
           onFocus={onFocus}
           aria-describedby={messageId}
-          className={classnames(
+          className={useClasses(
             styles.input,
-            theme.atoms.fontFamily.text,
-            theme.atoms.fontSize.standard,
-            theme.atoms.color.neutral,
+            textStyles.fontFamily,
+            textStyles.fontSize.standard,
+            textStyles.colors.neutral,
           )}
         />
         <Box

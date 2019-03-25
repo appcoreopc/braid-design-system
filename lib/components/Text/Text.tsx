@@ -1,25 +1,23 @@
 import React, { ReactNode } from 'react';
-import classnames from 'classnames';
-import { Color, FontWeight, Theme } from '../../themes/theme';
+import { useClasses, ClassRef } from 'treat';
+import { Color, FontWeight } from '../../themes/theme';
 import { Box, BoxProps } from '../Box/Box';
-import styles from './Text.css.js';
-import { useTheme } from '../private/ThemeContext';
+import styles from './Text.treat';
 
 type TextSize = 'standard' | 'large';
 
 const resolveTransformAtom = (
   size: TextSize,
   baseline: boolean,
-  theme: Theme,
-): string | null => {
+): ClassRef | null => {
   if (!baseline) {
     return null;
   }
   if (size === 'standard') {
-    return theme.atoms.transform.standardText;
+    return styles.transform.standard;
   }
   if (size === 'large') {
-    return theme.atoms.transform.largeText;
+    return styles.transform.large;
   }
   throw new Error('No valid text size provided');
 };
@@ -39,26 +37,21 @@ export const Text = ({
   weight,
   baseline = true,
   children,
-}: TextProps) => {
-  const theme = useTheme();
-
-  return (
-    <Box
-      component={component}
-      className={classnames(
-        styles.block,
-        theme.atoms.fontFamily.text,
-        theme.atoms.color[color || 'neutral'],
-        theme.atoms.fontSize[size],
-        theme.atoms.fontWeight[weight || 'regular'],
-        resolveTransformAtom(size, baseline, theme),
-        {
-          [styles.listItem]:
-            typeof component === 'string' && /^li$/i.test(component),
-        },
-      )}
-    >
-      {children}
-    </Box>
-  );
-};
+}: TextProps) => (
+  <Box
+    component={component}
+    className={useClasses(
+      styles.block,
+      styles.fontFamily,
+      styles.colors[color || 'neutral'],
+      styles.fontSize[size],
+      styles.fontWeight[weight || 'regular'],
+      resolveTransformAtom(size, baseline),
+      typeof component === 'string' && /^li$/i.test(component)
+        ? styles.listItem
+        : null,
+    )}
+  >
+    {children}
+  </Box>
+);

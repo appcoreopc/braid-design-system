@@ -4,8 +4,9 @@ import ActionsContext from '../Actions/ActionsContext';
 import { Text } from '../Text/Text';
 import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import styles from './TextLinkRenderer.css.js';
-import { useTheme } from '../private/ThemeContext';
 import { baseReset } from '../Reset/Reset.treat';
+import textStyles from '../Text/Text.treat';
+import boxStyles from '../Box/Box.treat';
 
 interface StyleProps {
   style: CSSProperties;
@@ -21,9 +22,8 @@ export const TextLinkRenderer = ({
   inline = false,
   children,
 }: TextLinkRendererProps) => {
-  const { atoms } = useTheme();
   const inActions = useContext(ActionsContext);
-  const defaultStyles = [styles.root, baseReset, atoms.color.link];
+  const defaultStyles = [styles.root, baseReset, textStyles.colors.link];
 
   if (inline) {
     return children({

@@ -14546,10 +14546,10 @@ travis-deploy-once@^5.0.9:
     url-join "^4.0.0"
     yargs "^12.0.1"
 
-treat@^1.0.0-alpha.8:
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.8.tgz#ea2d742aedcfd697bb0603f8c700bf8ed338a91e"
-  integrity sha512-PFsBTqhpZcKeYaoZWrHVBoAIv+rICEdwcWSMkgQqze63ffbHEYeOkaV1Tc9KGQFCpF4l3FMMLCevQkVcZjlNIg==
+treat@^1.0.0-alpha.10:
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/treat/-/treat-1.0.0-alpha.10.tgz#d4e5666feb1fbeeaeb3429ed3cad0ed09b2727c8"
+  integrity sha512-62kUvMaVBRgB6dbYV+su9UiVhTMgFR8OFXuwzSF+ZjPvlc8F2rkDKMrm/ZwWsk4gZTZZyP6nDLH3+lpVfq0NCw==
   dependencies:
     "@types/lodash" "^4.14.123"
     css-loader "^2.1.0"

@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import { useStyles, useClasses } from 'treat';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';
 import { TickCircleIcon } from '../icons/TickCircleIcon/TickCircleIcon';
-import styles from './FieldMessage.css.js';
+import treatStyles from './FieldMessage.treat';
 
 type FieldTone = 'neutral' | 'critical' | 'positive';
 
@@ -26,7 +27,7 @@ const renderIcon = (tone: FieldTone = 'neutral') => {
   };
 
   return (
-    <Box paddingRight="xsmall" className={styles.fixedSize}>
+    <Box paddingRight="xsmall" className={useClasses(treatStyles.fixedSize)}>
       {Icon[tone]}
     </Box>
   );
@@ -42,9 +43,11 @@ export const FieldMessage = ({
     return null;
   }
 
+  const styles = useStyles(treatStyles);
+
   return (
     <Box id={id} paddingBottom="small" display="flex" className={styles.root}>
-      <Box minHeight="standardText" className={styles.grow}>
+      <Box className={styles.messageContainer}>
         <Text color={tone}>
           <Box display="flex">
             {renderIcon(tone)}

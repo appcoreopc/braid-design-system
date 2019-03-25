@@ -1,33 +1,32 @@
 import React from 'react';
-import classnames from 'classnames';
-import { useTheme } from '../private/ThemeContext';
+import { useClasses, ClassRef } from 'treat';
 import { Reset, ResetProps } from '../Reset/Reset';
 import {
-  HorizontalSpacing,
-  VerticalPadding,
   Spacing,
+  HorizontalSpacing,
   BorderRadius,
   BackgroundColor,
   Display,
   FlexDirection,
   BoxShadow,
   Transition,
-  Transform,
   Width,
-  IconSize,
 } from '../../themes/theme';
+import * as styles from './Box.treat';
 
-function getResponsiveClasses<AtomName extends string>(
-  atoms: Record<AtomName, string>,
-  desktopAtoms: Record<AtomName, string>,
+type VerticalPadding = Spacing | 'standardTouchableText';
+
+function getResponsiveClassRefs<AtomName extends string>(
+  defaultStyles: Record<AtomName, ClassRef>,
+  desktopStyles: Record<AtomName, ClassRef>,
   propValue: ResponsiveProp<AtomName>,
 ) {
   if (typeof propValue === 'string') {
-    return atoms[propValue!];
+    return defaultStyles[propValue];
   } else if (propValue instanceof Array) {
     return propValue[0] !== propValue[1]
-      ? `${atoms[propValue[0]!] || ''} ${desktopAtoms[propValue[1]!] || ''}`
-      : atoms[propValue[0]!];
+      ? [defaultStyles[propValue[0]], desktopStyles[propValue[1]]]
+      : defaultStyles[propValue[0]];
   }
 }
 
@@ -47,9 +46,7 @@ export interface BoxProps extends ResetProps {
   borderRadius?: BorderRadius;
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
-  transform?: Transform;
   transition?: Transition;
-  minHeight?: IconSize;
   width?: Width;
 }
 
@@ -68,80 +65,77 @@ export const Box = ({
   backgroundColor,
   boxShadow,
   transition,
-  transform,
-  minHeight,
   width,
   className,
   ...restProps
 }: BoxProps) => {
-  const { atoms } = useTheme();
-
   return (
     <Reset
-      className={classnames(
+      className={useClasses(
         className,
-        atoms.backgroundColor[backgroundColor!],
-        atoms.boxShadow[boxShadow!],
-        atoms.borderRadius[borderRadius!],
-        atoms.boxShadow[boxShadow!],
-        atoms.transition[transition!],
-        atoms.transform[transform!],
-        atoms.minHeight[minHeight!],
-        atoms.width[width!],
+        styles.backgroundColors[backgroundColor!],
+        styles.boxShadow[boxShadow!],
+        styles.borderRadius[borderRadius!],
+        styles.transition[transition!],
+        styles.width[width!],
         marginTop &&
-          getResponsiveClasses(
-            atoms.marginTop,
-            atoms.marginTopDesktop,
+          getResponsiveClassRefs(
+            styles.marginTop.main,
+            styles.marginTop.desktop,
             marginTop,
           ),
         marginRight &&
-          getResponsiveClasses(
-            atoms.marginRight,
-            atoms.marginRightDesktop,
+          getResponsiveClassRefs(
+            styles.marginRight.main,
+            styles.marginRight.desktop,
             marginRight,
           ),
         marginBottom &&
-          getResponsiveClasses(
-            atoms.marginBottom,
-            atoms.marginBottomDesktop,
+          getResponsiveClassRefs(
+            styles.marginBottom.main,
+            styles.marginBottom.desktop,
             marginBottom,
           ),
         marginLeft &&
-          getResponsiveClasses(
-            atoms.marginLeft,
-            atoms.marginLeftDesktop,
+          getResponsiveClassRefs(
+            styles.marginLeft.main,
+            styles.marginLeft.desktop,
             marginLeft,
           ),
         paddingTop &&
-          getResponsiveClasses(
-            atoms.paddingTop,
-            atoms.paddingTopDesktop,
+          getResponsiveClassRefs(
+            styles.paddingTop.main,
+            styles.paddingTop.desktop,
             paddingTop,
           ),
         paddingRight &&
-          getResponsiveClasses(
-            atoms.paddingRight,
-            atoms.paddingRightDesktop,
+          getResponsiveClassRefs(
+            styles.paddingRight.main,
+            styles.paddingRight.desktop,
             paddingRight,
           ),
         paddingBottom &&
-          getResponsiveClasses(
-            atoms.paddingBottom,
-            atoms.paddingBottomDesktop,
+          getResponsiveClassRefs(
+            styles.paddingBottom.main,
+            styles.paddingBottom.desktop,
             paddingBottom,
           ),
         paddingLeft &&
-          getResponsiveClasses(
-            atoms.paddingLeft,
-            atoms.paddingLeftDesktop,
+          getResponsiveClassRefs(
+            styles.paddingLeft.main,
+            styles.paddingLeft.desktop,
             paddingLeft,
           ),
         display &&
-          getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
+          getResponsiveClassRefs(
+            styles.display,
+            styles.displayDesktop,
+            display,
+          ),
         flexDirection &&
-          getResponsiveClasses(
-            atoms.flexDirection,
-            atoms.flexDirectionDesktop,
+          getResponsiveClassRefs(
+            styles.flexDirection,
+            styles.flexDirectionDesktop,
             flexDirection,
           ),
       )}

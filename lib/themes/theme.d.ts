@@ -1,4 +1,4 @@
-import { Theme as TreatTheme } from 'treat';
+import { ThemeRef } from 'treat';
 
 // Text definitions
 interface TextDefinition {
@@ -23,6 +23,10 @@ interface SpacingToken {
   xxlarge: number;
 }
 
+interface HorizontalSpacingToken extends SpacingToken {
+  gutter: number;
+}
+
 // Border definitions
 type BorderWidth = 'standard' | 'large';
 
@@ -35,7 +39,7 @@ export interface Tokens {
   heading: Record<HeadingSize, ResponsiveHeading>;
   text: Record<TextSize, ResponsiveText>;
   rowSpacing: SpacingToken;
-  columnSpacing: SpacingToken | Record<'gutter', number>;
+  columnSpacing: HorizontalSpacingToken;
   borderWidth: Record<BorderWidth, number>;
 }
 
@@ -89,7 +93,7 @@ export type IconSize =
   | 'largeText'
   | 'largeTextInline';
 export type Width = 'full';
-type Spacing =
+export type Spacing =
   | 'none'
   | 'xxsmall'
   | 'xsmall'
@@ -99,55 +103,10 @@ type Spacing =
   | 'xlarge'
   | 'xxlarge';
 type HorizontalSpacing = Spacing | 'gutter';
-type VerticalPadding = Spacing | 'standardTouchableText';
-export type Transform =
-  | 'standardText'
-  | 'largeText'
-  | 'level1Heading'
-  | 'level2Heading'
-  | 'level3Heading'
-  | 'touchable';
 type Transition = 'fast' | 'touchable';
-
-export interface Atoms {
-  backgroundColor: Record<BackgroundColor, string>;
-  borderRadius: Record<BorderRadius, string>;
-  boxShadow: Record<BoxShadow, string>;
-  color: Record<Color, string>;
-  fill: Record<Fill, string>;
-  fontFamily: Record<FontFamily, string>;
-  fontSize: Record<FontSize, string>;
-  fontWeight: Record<FontWeight, string>;
-  height: Record<IconSize, string>;
-  marginTop: Record<Spacing, string>;
-  marginRight: Record<HorizontalSpacing, string>;
-  marginBottom: Record<Spacing, string>;
-  marginLeft: Record<HorizontalSpacing, string>;
-  marginTopDesktop: Record<Spacing, string>;
-  marginRightDesktop: Record<HorizontalSpacing, string>;
-  marginBottomDesktop: Record<Spacing, string>;
-  marginLeftDesktop: Record<HorizontalSpacing, string>;
-  minHeight: Record<IconSize, string>;
-  paddingTop: Record<VerticalPadding, string>;
-  paddingRight: Record<HorizontalSpacing, string>;
-  paddingBottom: Record<VerticalPadding, string>;
-  paddingLeft: Record<HorizontalSpacing, string>;
-  paddingTopDesktop: Record<VerticalPadding, string>;
-  paddingRightDesktop: Record<HorizontalSpacing, string>;
-  paddingBottomDesktop: Record<VerticalPadding, string>;
-  paddingLeftDesktop: Record<HorizontalSpacing, string>;
-  display: Record<Display, string>;
-  displayDesktop: Record<Display, string>;
-  flexDirection: Record<FlexDirection, string>;
-  flexDirectionDesktop: Record<FlexDirection, string>;
-  transform: Record<Transform, string>;
-  transition: Record<Transition, string>;
-  width: Record<IconSize | Width, string>;
-}
 
 export interface Theme {
   readonly name: string;
   readonly tokens: Tokens;
-  readonly atoms: Atoms;
-  readonly treatTheme: TreatTheme<Tokens>;
+  readonly treatTheme: ThemeRef;
 }

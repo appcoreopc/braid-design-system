@@ -1,4 +1,4 @@
-import { css, select } from 'treat';
+import { css } from 'treat';
 
 const reset = css({
   base: {
@@ -22,6 +22,11 @@ const reset = css({
   },
   quote: {
     quotes: 'none',
+    selectors: {
+      '&:before, &:after': {
+        content: "''",
+      },
+    },
   },
   table: {
     borderCollapse: 'collapse',
@@ -32,10 +37,6 @@ const reset = css({
     backgroundColor: 'transparent',
     color: 'inherit',
   },
-});
-
-select`${reset.quote}:before, ${reset.quote}:after`({
-  content: "''",
 });
 
 export const baseReset = reset.base;

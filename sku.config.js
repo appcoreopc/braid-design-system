@@ -22,8 +22,8 @@ module.exports = {
       new TreatPlugin({
         outputCSS: isClient,
         outputLoaders: [MiniCssExtractPlugin.loader],
-        localIdentName: '[basename]-[local]_[hash:base64:5]',
-        themeIdentName: '[folder]_[hash:base64:5]',
+        localIdentName: '[name]-[local]_[hash:base64:5]',
+        themeIdentName: '-[folder]_[hash:base64:5]',
       }),
     );
 
