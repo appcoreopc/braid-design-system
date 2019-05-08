@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useClassNames } from 'treat';
 import { TextSize, Fill } from '../../../themes/theme';
 import { Box } from '../../Box/Box';
 import * as styles from './Icon.treat';

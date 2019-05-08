@@ -1,5 +1,5 @@
 import isEqual from 'lodash/isEqual';
-import { Styles } from 'sku/treat';
+import { Styles } from 'treat';
 import { Tokens } from './theme';
 
 export default (tokens: Tokens) => {

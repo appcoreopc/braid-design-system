@@ -1,4 +1,4 @@
-import { ThemeRef } from 'sku/treat';
+import { ThemeRef } from 'treat';
 
 // Text definitions
 interface TextDefinition {

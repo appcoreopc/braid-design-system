@@ -1,4 +1,4 @@
-import { style, css } from 'sku/treat';
+import { style, css } from 'treat';
 
 export const inline = style(
   {

@@ -1,4 +1,4 @@
-import { createTheme } from 'sku/treat';
+import { createTheme } from 'treat';
 import { Tokens } from './theme';
 import makeUtils from './makeUtils';
 

@@ -1,4 +1,4 @@
-import { style } from 'sku/treat';
+import { style } from 'treat';
 
 export const root = style(
   {

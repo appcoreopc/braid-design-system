@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useClassNames } from 'sku/treat';
+import { useClassNames } from 'treat';
 import { Box } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 import { ErrorIcon } from '../icons/ErrorIcon/ErrorIcon';

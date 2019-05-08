@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { TreatProvider } from 'sku/treat';
+import { TreatProvider } from 'treat';
 import ThemeContext from '../private/ThemeContext';
 import { Theme } from '../../themes/theme';
 
