@@ -25,9 +25,6 @@ export default (
     positive: atoms.backgroundColor_positive,
     positiveLight: atoms.backgroundColor_positiveLight,
   },
-  borderRadius: {
-    standard: atoms.borderRadius_standard,
-  },
   boxShadow: {
     outlineFocus: atoms.boxShadow_outlineFocus,
     borderStandard: atoms.boxShadow_borderStandard,
@@ -258,13 +255,6 @@ export default (
     level3Heading: atoms.transform_level3Heading,
     standardText: atoms.transform_standardText,
     touchable: atoms.transform_touchable,
-  },
-  transition: {
-    fast: atoms.transition_fast,
-    touchable: atoms.transition_touchable,
-  },
-  width: {
-    full: atoms.width_full,
   },
   flexDirection: {
     row: atoms.flexDirection_row,

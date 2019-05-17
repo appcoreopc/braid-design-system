@@ -6,16 +6,14 @@ import {
   HorizontalSpacing,
   VerticalPadding,
   Spacing,
-  BorderRadius,
   BackgroundColor,
   Display,
   FlexDirection,
   BoxShadow,
-  Transition,
   Transform,
-  Width,
 } from '../../themes/theme';
 import { ContrastProvider } from './ContrastContext';
+import * as styles from './Box.treat';
 
 function getResponsiveClasses<AtomName extends string>(
   atoms: Record<AtomName, string>,
@@ -44,12 +42,12 @@ export interface BoxProps extends ResetProps {
   marginRight?: ResponsiveProp<HorizontalSpacing>;
   display?: ResponsiveProp<Display>;
   flexDirection?: ResponsiveProp<FlexDirection>;
-  borderRadius?: BorderRadius;
+  borderRadius?: 'standard';
   backgroundColor?: BackgroundColor;
   boxShadow?: BoxShadow;
   transform?: Transform;
-  transition?: Transition;
-  width?: Width;
+  transition?: 'fast' | 'touchable';
+  width?: 'full';
 }
 
 export const Box = ({
@@ -80,11 +78,11 @@ export const Box = ({
         className,
         atoms.backgroundColor[backgroundColor!],
         atoms.boxShadow[boxShadow!],
-        atoms.borderRadius[borderRadius!],
+        styles.borderRadius[borderRadius!],
         atoms.boxShadow[boxShadow!],
-        atoms.transition[transition!],
+        styles.transition[transition!],
         atoms.transform[transform!],
-        atoms.width[width!],
+        styles.width[width!],
         marginTop &&
           getResponsiveClasses(
             atoms.marginTop,

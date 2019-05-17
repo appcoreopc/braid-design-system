@@ -61,7 +61,6 @@ type BackgroundColor =
   | 'criticalLight'
   | 'positive'
   | 'positiveLight';
-type BorderRadius = 'standard';
 export type BoxShadow =
   | 'outlineFocus'
   | 'borderStandard'
@@ -168,7 +167,6 @@ type ResetTags =
   | 'mark'
   | 'audio'
   | 'video';
-export type Width = 'full';
 type Spacing =
   | 'none'
   | 'xxsmall'
@@ -187,12 +185,10 @@ export type Transform =
   | 'level2Heading'
   | 'level3Heading'
   | 'touchable';
-type Transition = 'fast' | 'touchable';
 
 export interface Atoms {
   reset: Record<ResetTags, string>;
   backgroundColor: Record<BackgroundColor, string>;
-  borderRadius: Record<BorderRadius, string>;
   boxShadow: Record<BoxShadow, string>;
   color: Record<Color, string>;
   fontFamily: Record<FontFamily, string>;
@@ -219,8 +215,6 @@ export interface Atoms {
   flexDirection: Record<FlexDirection, string>;
   flexDirectionDesktop: Record<FlexDirection, string>;
   transform: Record<Transform, string>;
-  transition: Record<Transition, string>;
-  width: Record<Width, string>;
 }
 
 export interface Theme {

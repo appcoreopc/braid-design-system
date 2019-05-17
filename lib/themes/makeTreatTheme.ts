@@ -17,6 +17,9 @@ interface ThemeVars extends Tokens {
       white: string;
     };
   };
+  borderRadius: {
+    standard: string;
+  };
 }
 
 const decorateTheme = (vars: ThemeVars) => ({

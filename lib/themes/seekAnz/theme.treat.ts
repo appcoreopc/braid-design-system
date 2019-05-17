@@ -21,4 +21,7 @@ export default makeTreatTheme({
       white: 'white',
     },
   },
+  borderRadius: {
+    standard: '4px',
+  },
 });
