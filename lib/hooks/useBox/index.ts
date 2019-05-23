@@ -1,9 +1,37 @@
 import * as styles from './box.treat';
-import { BoxProps } from '../../components/Box/Box';
-import { useTheme } from '../../components/private/ThemeContext';
+import {
+  HorizontalSpacing,
+  VerticalPadding,
+  Spacing,
+  BackgroundColor,
+  BoxShadow,
+} from '../../themes/theme';
 import { useClassNames } from 'sku/treat';
+import { useTheme } from '../../components/private/ThemeContext';
+import { ResetProps } from '../../components/Reset/Reset';
 
-export type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
+export interface BoxProps extends ResetProps {
+  paddingTop?: ResponsiveProp<VerticalPadding>;
+  paddingBottom?: ResponsiveProp<VerticalPadding>;
+  paddingLeft?: ResponsiveProp<HorizontalSpacing>;
+  paddingRight?: ResponsiveProp<HorizontalSpacing>;
+  marginTop?: ResponsiveProp<Spacing>;
+  marginBottom?: ResponsiveProp<Spacing>;
+  marginLeft?: ResponsiveProp<HorizontalSpacing>;
+  marginRight?: ResponsiveProp<HorizontalSpacing>;
+  display?: ResponsiveProp<
+    'block' | 'inline' | 'none' | 'inlineBlock' | 'flex'
+  >;
+  flexDirection?: ResponsiveProp<'row' | 'column'>;
+  borderRadius?: 'standard';
+  backgroundColor?: BackgroundColor;
+  boxShadow?: BoxShadow;
+  transform?: 'touchable';
+  transition?: 'fast' | 'touchable';
+  width?: 'full';
+}
+
+type ResponsiveProp<AtomName> = AtomName | [AtomName, AtomName];
 
 function getResponsiveClasses<PropName extends string>(
   mobileClasses: Record<PropName, string>,
