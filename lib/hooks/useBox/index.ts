@@ -43,11 +43,11 @@ export default ({
   return useClassNames(
     atoms.backgroundColor[backgroundColor!],
     atoms.boxShadow[boxShadow!],
-    atoms.borderRadius[borderRadius!],
+    styles.borderRadius[borderRadius!],
     atoms.boxShadow[boxShadow!],
     styles.transition[transition!],
     styles.transform[transform!],
-    atoms.width[width!],
+    styles.width[width!],
     marginTop &&
       getResponsiveClasses(
         styles.margin.top,
@@ -97,11 +97,11 @@ export default ({
         paddingLeft,
       ),
     display &&
-      getResponsiveClasses(atoms.display, atoms.displayDesktop, display),
+      getResponsiveClasses(styles.display, styles.displayDesktop, display),
     flexDirection &&
       getResponsiveClasses(
-        atoms.flexDirection,
-        atoms.flexDirectionDesktop,
+        styles.flexDirection,
+        styles.flexDirectionDesktop,
         flexDirection,
       ),
   );
